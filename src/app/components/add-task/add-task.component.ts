@@ -5,6 +5,7 @@ import {
   Input,
   OnChanges,
 } from '@angular/core';
+import CreateTaskDto from 'src/app/dtos/create-task.dto';
 import { Task } from 'src/app/models/task';
 
 @Component({
@@ -13,27 +14,26 @@ import { Task } from 'src/app/models/task';
   styleUrls: ['./add-task.component.css'],
 })
 export class AddTaskComponent implements OnChanges {
-  title: string = '';
+  text: string = '';
   @Input() taskToBeEdited: Task = new Task();
-  @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
+  @Output() onAddTask: EventEmitter<CreateTaskDto> = new EventEmitter();
   @Output() onEditTaskChange: EventEmitter<Task> = new EventEmitter();
 
   ngOnChanges() {
-    if (this.taskToBeEdited.title.length > 0)
-      this.title = this.taskToBeEdited.title;
+    if (this.taskToBeEdited.text.length > 0)
+      this.text = this.taskToBeEdited.text;
   }
 
   onClick() {
-    const newTask = new Task();
-    newTask.title = this.title;
-    this.onAddTask.emit(newTask);
-    this.title = '';
+    const createTaskDto: CreateTaskDto = { text: this.text };
+    this.onAddTask.emit(createTaskDto);
+    this.text = '';
   }
 
   onEditClick() {
-    this.taskToBeEdited.title = this.title;
+    this.taskToBeEdited.text = this.text;
     this.onEditTaskChange.emit(this.taskToBeEdited);
     this.taskToBeEdited = new Task();
-    this.title = '';
+    this.text = '';
   }
 }

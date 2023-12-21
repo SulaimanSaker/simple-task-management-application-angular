@@ -6,13 +6,13 @@
   <input
     class="p-[3px] ml-[5px] outline rounded-[5px]"
     type="text"
-    name="title"
+    name="text"
     placeholder="Add Task"
-    [(ngModel)]="title"
+    [(ngModel)]="text"
   />
 
   <input
-    *ngIf="this.taskToBeEdited.title.length <= 0"
+    *ngIf="this.taskToBeEdited.text.length <= 0"
     type="submit"
     value="Add"
     class="cursor-pointer bg-green-500 text-white p-[3px] ml-[5px] w-[60px] rounded-[5px] hover:bg-[#328f43]"
@@ -20,7 +20,7 @@
   />
 
   <input
-    *ngIf="this.taskToBeEdited.title.length > 0"
+    *ngIf="this.taskToBeEdited.text.length > 0"
     type="submit"
     value="Update"
     class="cursor-pointer bg-green-500 text-white p-[3px] ml-[5px] w-[60px] rounded-[5px] hover:bg-[#328f43]"

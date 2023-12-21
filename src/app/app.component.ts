@@ -20,8 +20,6 @@ export class AppComponent implements OnInit {
 
     if (authToken !== null) {
       this.isLoggedIn = true;
-
-      this.authService.verifyToken(authToken).subscribe(() => {});
     } else {
       localStorage.removeItem('token');
 

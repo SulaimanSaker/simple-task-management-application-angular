@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import CreateTaskDto from 'src/app/dtos/create-task.dto';
 import { Task } from 'src/app/models/task';
 import { CrudService } from 'src/app/services/crud.service';
 
@@ -24,8 +25,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  addTask(task: Task) {
-    this.crudService.addTask(task).subscribe(() => {
+  addTask(createTaskDto: CreateTaskDto) {
+    this.crudService.addTask(createTaskDto).subscribe(() => {
       this.ngOnInit();
     });
   }
