@@ -5,34 +5,50 @@
   >
     <h1 class="text-3xl text-yellow-600 mt-[20px]">{{ title }}</h1>
 
+    <!-- Login Form -->
     <form
+      [formGroup]="loginForm"
       class="flex flex-col justify-center items-center p-[5px] mt-[20px] w-[500px]"
     >
       <!-- Email -->
       <label class="text-lg text-center text-[#e1e1e1] p-[5px]" for="text"
         >Email</label
       >
-
       <input
+        formControlName="loginEmail"
         class="p-[3px] ml-[5px] outline rounded-[5px]"
         type="text"
-        name="title"
         placeholder="Enter Email"
-        [(ngModel)]="loginEmail"
       />
+      <div
+        *ngIf="loginEmail!.invalid && loginEmail!.touched"
+        class="text-red-500"
+      >
+        Email is required.
+      </div>
+      <div
+        *ngIf="loginEmail!.invalid && loginEmail!.touched"
+        class="text-red-500"
+      >
+        Invalid email format.
+      </div>
 
       <!-- Password -->
       <label class="text-lg text-center text-[#e1e1e1] p-[5px]" for="text"
         >Password</label
       >
-
       <input
+        formControlName="loginPassword"
         class="p-[3px] ml-[5px] outline rounded-[5px]"
         type="password"
-        name="title"
         placeholder="Enter Password"
-        [(ngModel)]="loginPassword"
       />
+      <div
+        *ngIf="loginPassword!.invalid && loginPassword!.touched"
+        class="text-red-500"
+      >
+        Password is required.
+      </div>
 
       <!-- Submit Button -->
       <input
@@ -44,7 +60,6 @@
     </form>
 
     <p class="text-white mt-[20px]">New User?</p>
-
     <input
       type="submit"
       value="Go to Register"
@@ -59,47 +74,67 @@
   >
     <h1 class="text-3xl text-yellow-600 mt-[20px]">{{ title }}</h1>
 
+    <!-- Registration Form -->
     <form
+      [formGroup]="registerForm"
       class="flex flex-col justify-center items-center p-[5px] mt-[20px] w-[500px]"
     >
       <!-- Name -->
       <label class="text-lg text-center text-[#e1e1e1] p-[5px]" for="text"
         >Name</label
       >
-
       <input
+        formControlName="registerName"
         class="p-[3px] ml-[5px] outline rounded-[5px]"
         type="text"
-        name="title"
         placeholder="Enter Name"
-        [(ngModel)]="registerName"
       />
+      <div
+        *ngIf="registerName!.invalid && registerName!.touched"
+        class="text-red-500"
+      >
+        Name is required.
+      </div>
 
       <!-- Email -->
       <label class="text-lg text-center text-[#e1e1e1] p-[5px]" for="email"
         >Email</label
       >
-
       <input
+        formControlName="registerEmail"
         class="p-[3px] ml-[5px] outline rounded-[5px]"
         type="text"
-        name="email"
         placeholder="Enter Email"
-        [(ngModel)]="registerEmail"
       />
+      <div
+        *ngIf="registerEmail!.invalid && registerEmail!.touched"
+        class="text-red-500"
+      >
+        Email is required.
+      </div>
+      <div
+        *ngIf="registerEmail!.invalid && registerEmail!.touched"
+        class="text-red-500"
+      >
+        Invalid email format.
+      </div>
 
       <!-- Password -->
       <label class="text-lg text-center text-[#e1e1e1] p-[5px]" for="text"
         >Password</label
       >
-
       <input
+        formControlName="registerPassword"
         class="p-[3px] ml-[5px] outline rounded-[5px]"
         type="password"
-        name="title"
         placeholder="Enter Password"
-        [(ngModel)]="registerPassword"
       />
+      <div
+        *ngIf="registerPassword!.invalid && registerPassword!.touched"
+        class="text-red-500"
+      >
+        Password is required.
+      </div>
 
       <!-- Submit Button -->
       <input
@@ -111,7 +146,6 @@
     </form>
 
     <p class="text-white mt-[20px]">Existing User?</p>
-
     <input
       type="submit"
       value="Go to Login"
